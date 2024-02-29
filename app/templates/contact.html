@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <div class = 'Title'>  
+        <h2>Contact Form</h2>
+    </div>
+
+    <div class="formContent">
+        <p>Please fill out the following form</p>
+
+        <form method="POST" action="{{ url_for('contact')}}">
+            {{ form.csrf_token }}
+
+            <div class="name">
+                {{ form.name.label }} 
+                {{ form.name }}
+            </div>
+
+            <p></p>
+            <div class="email">
+                {{ form.email.label}}
+                {{ form.email }}
+            </div>
+            <p></p>
+
+            <div class="subject">
+                {{ form.subject.label }}
+                {{ form.subject }}
+            </div>
+            <p></p>
+
+            <div class="message">
+                {{ form.message.label }}
+                {{ form.message }}
+            </div>
+            <p></p>
+            <button type="submit">Submit</button>
+
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+
+        </form>
+    </div>
+
+{% endblock %}
